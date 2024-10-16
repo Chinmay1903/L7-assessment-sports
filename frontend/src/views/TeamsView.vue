@@ -2,16 +2,19 @@
     <div>
         <h2>Teams</h2>
         <div class="team-page-view d-flex justify-content-evenly flex-wrap">
-            <div v-for="(team, index) in teams" :key="index">
-                <CardComponent :header="false">
-                    <template v-slot:content>
-                        <h3>{{ team.name }}</h3>
-                    </template>
-                    <template v-slot:footer>
-                        <p>Coach: {{ team.coach }}</p>
-                    </template>
-                </CardComponent>
+            <div v-if="teams.length > 0">
+                <div v-for="(team, index) in teams" :key="index">
+                    <CardComponent :header="false">
+                        <template v-slot:content>
+                            <h3>{{ team.name }}</h3>
+                        </template>
+                        <template v-slot:footer>
+                            <p>Coach: {{ team.coach }}</p>
+                        </template>
+                    </CardComponent>
+                </div>
             </div>
+            <h5 v-else class="text-center">No Team Registering</h5>
         </div>
     </div>
 </template>

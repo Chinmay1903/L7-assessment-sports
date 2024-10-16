@@ -1,17 +1,20 @@
 <template>
     <div>
         <h2>Teams</h2>
-        <div class="team-page-view d-flex justify-content-evenly flex-wrap">
-            <div v-for="(team, index) in areas" :key="index">
-                <CardComponent :header="false">
-                    <template v-slot:content>
-                        <h3>{{ team.name }}</h3>
-                    </template>
-                    <template v-slot:footer>
-                        <p>City: {{ team.city }}</p>
-                    </template>
-                </CardComponent>
+        <div class="team-page-view">
+            <div v-if="areas.length > 0" class="d-flex justify-content-evenly flex-wrap">
+                <div v-for="(team, index) in areas" :key="index">
+                    <CardComponent :header="false">
+                        <template v-slot:content>
+                            <h3>{{ team.name }}</h3>
+                        </template>
+                        <template v-slot:footer>
+                            <p>City: {{ team.city }}</p>
+                        </template>
+                    </CardComponent>
+                </div>
             </div>
+            <h5 v-else class="text-center">No area registered</h5>
         </div>
     </div>
 </template>

@@ -1,7 +1,7 @@
 import axios from 'axios'; // Import axios for making HTTP requests
 
 // Define the base URL for the API endpoint
-const BASE_URL = 'http://127.0.0.1:8000/api/'; // Replace with your API endpoint
+const BASE_URL = 'http://localhost:8000/api/'; // Replace with your API endpoint
 
 /**
  * DataTeams

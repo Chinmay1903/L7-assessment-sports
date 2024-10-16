@@ -10,7 +10,7 @@
                     </option>
                 </select>
             </div>
-            <div>
+            <div v-if="players.length > 0">
                 <table class="table table-striped table-hover">
                     <thead>
                         <tr>
@@ -30,6 +30,7 @@
                     </tbody>
                 </table>
             </div>
+            <h5 v-else class="text-center">No Player Registering</h5>
         </div>
     </div>
 </template>

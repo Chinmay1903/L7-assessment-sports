@@ -19,13 +19,16 @@
                     <p>Teams</p>
                 </template>
                 <template v-slot:content>
-                    <CardComponent v-for="(team, index) in teams" :key="index" :footer="false" :header="false">
-                        <template v-slot:content>
-                            <div class="text-center">
-                                <h5>{{ team.name }}</h5>
-                            </div>
-                        </template>
-                    </CardComponent>
+                    <div v-if="teams.length > 0">
+                        <CardComponent v-for="(team, index) in teams" :key="index" :footer="false" :header="false">
+                            <template v-slot:content>
+                                <div class="text-center">
+                                    <h5>{{ team.name }}</h5>
+                                </div>
+                            </template>
+                        </CardComponent>
+                    </div>
+                    <p v-else class="text-center">No Team Registering</p>
                 </template>
             </CardComponent>
         </div>
@@ -35,13 +38,16 @@
                     <p>Players</p>
                 </template>
                 <template v-slot:content>
-                    <CardComponent v-for="(player, index) in players" :key="index" :footer="false" :header="false">
-                        <template v-slot:content>
-                            <div class="text-center">
-                                <h5>{{ player.name }}</h5>
-                            </div>
-                        </template>
-                    </CardComponent>
+                    <div v-if="players.length > 0">
+                        <CardComponent v-for="(player, index) in players" :key="index" :footer="false" :header="false">
+                            <template v-slot:content>
+                                <div class="text-center">
+                                    <h5>{{ player.name }}</h5>
+                                </div>
+                            </template>
+                        </CardComponent>
+                    </div>
+                    <p v-else class="text-center">No Player Registering</p>
                 </template>
             </CardComponent>
         </div>
@@ -51,13 +57,16 @@
                     <p>Areas</p>
                 </template>
                 <template v-slot:content>
-                    <CardComponent v-for="(area, index) in areas" :key="index" :footer="false" :header="false">
-                        <template v-slot:content>
-                            <div class="text-center">
-                                <h5>{{ area.name }}</h5>
-                            </div>
-                        </template>
-                    </CardComponent>
+                    <div v-if="areas.length > 0">
+                        <CardComponent v-for="(area, index) in areas" :key="index" :footer="false" :header="false">
+                            <template v-slot:content>
+                                <div class="text-center">
+                                    <h5>{{ area.name }}</h5>
+                                </div>
+                            </template>
+                        </CardComponent>
+                    </div>
+                    <p v-else class="text-center">No Area Registering</p>
                 </template>
             </CardComponent>
         </div>

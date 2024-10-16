@@ -1,22 +1,25 @@
 <template>
      <div>
         <h2>Matches</h2>
-        <div class="team-page-view d-flex justify-content-evenly flex-wrap">
-            <div v-for="(match, index) in matches" :key="index">
-                <CardComponent>
-                    <template v-slot:header>
-                        <h5>{{ match.date }}</h5>
-                    </template>
-                    <template v-slot:content >
-                        <div class="text-center">
-                            <h3>{{ match.home_team__name }} <br> vs <br> {{ match.away_team__name }}</h3>
-                        </div>
-                    </template>
-                    <template v-slot:footer>
-                        <p>At: {{ match.location__name }}</p>
-                    </template>
-                </CardComponent>
+        <div class="team-page-view">
+            <div v-if="matches.length > 0" class="d-flex justify-content-evenly flex-wrap">
+                <div v-for="(match, index) in matches" :key="index">
+                    <CardComponent>
+                        <template v-slot:header>
+                            <h5>{{ match.date }}</h5>
+                        </template>
+                        <template v-slot:content >
+                            <div class="text-center">
+                                <h3>{{ match.home_team__name }} <br> vs <br> {{ match.away_team__name }}</h3>
+                            </div>
+                        </template>
+                        <template v-slot:footer>
+                            <p>At: {{ match.location__name }}</p>
+                        </template>
+                    </CardComponent>
+                </div>
             </div>
+            <h5 v-else class="text-center">No matches organised</h5>
         </div>
     </div>
 </template>
