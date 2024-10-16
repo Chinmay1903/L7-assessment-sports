@@ -4,7 +4,7 @@
       <SideNav />
     </div>
   
-    <div class="right-section p-5">
+    <div class="right-section p-5 container-fluid">
       <RouterView />
     </div>
   </div>
@@ -24,7 +24,7 @@ export default defineComponent({
 </script>
 
 
-<style scoped>
+<style lang="scss" scoped>
 .main-content {
   .left-section, .right-section {
     min-height: 100vh;

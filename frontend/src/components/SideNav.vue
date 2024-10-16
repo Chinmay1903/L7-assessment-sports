@@ -1,58 +1,76 @@
 <template>
-    <div class="d-flex">
-        <!-- Sidebar -->
-        <div id="sidebar" class="bg-light border-end">
-            <div class="sidebar-header p-3">
-                <h4>Sidebar Menu</h4>
-                <button class="btn btn-outline-secondary" @click="toggleSidebar" aria-expanded="true"
-                    aria-controls="sidebar">
-                    Toggle Sidebar
-                </button>
-            </div>
-            <div class="list-group list-group-flush"> 
-                <RouterLink v-for="(item, index) in menuItems" :to="item.link" :key="index"
-                    class="list-group-item list-group-item-action p-3 text-capitalize">
-                    {{ item.name }}
-                </RouterLink>
-            </div>
-          </div>
+  <div id="sidebar" class="bg-light border-end">
+    <div class="sidebar-header p-3 d-flex justify-content-between">
+      <h4 v-if="!isCollapsed">Menu</h4>
+      <button class="btn" @click="toggleSidebar" aria-expanded="true" aria-controls="sidebar">
+        <i :class="isCollapsed ? 'bi bi-caret-right-fill' : 'bi bi-caret-left-fill'"></i>
+      </button>
     </div>
+    <div class="list-group list-group-flush">
+      <RouterLink v-for="(item, index) in menuItems" :to="item.link" :key="index"
+        class="list-group-item list-group-item-action p-3 text-capitalize">
+        <i :class="item['icon-class']"></i>
+        <span class="ms-2" v-if="!isCollapsed">{{ item.name }}</span>
+      </RouterLink>
+    </div>
+  </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue';
-import { RouterLink } from 'vue-router';
+import { defineComponent, ref } from 'vue'; // Import necessary functions from Vue
+import { RouterLink } from 'vue-router'; // Import RouterLink to handle navigation
 
+/**
+ * SideNav
+ * A Vue component representing a collapsible sidebar navigation menu.
+ * This component contains links to different sections of the application.
+ */
 export default defineComponent({
-    name: "SideNav",
-    components: {
-      RouterLink,
-    },
-    setup() {
-    const isCollapsed = ref(false);
+  name: "SideNav", // The name of the component for debugging and development
 
+  /**
+   * Registering child components used within this component.
+   */
+  components: {
+    RouterLink, // Register the RouterLink component for navigation
+  },
+
+  /**
+   * The setup function is where the component's reactive state and methods are defined.
+   */
+  setup() {
+    // Reactive reference to manage the collapsed state of the sidebar
+    const isCollapsed = ref(false); 
+
+    /**
+     * Toggles the collapsed state of the sidebar.
+     * It updates the 'collapsed' class on the sidebar element based on its current state.
+     */
     const toggleSidebar = () => {
-      isCollapsed.value = !isCollapsed.value;
-      const sidebar = document.getElementById('sidebar');
+      isCollapsed.value = !isCollapsed.value; // Invert the collapsed state
+      const sidebar = document.getElementById('sidebar'); // Get the sidebar element by ID
       if (isCollapsed.value) {
-        sidebar?.classList.add('collapsed');
+        sidebar?.classList.add('collapsed'); // Add the collapsed class if sidebar is collapsed
       } else {
-        sidebar?.classList.remove('collapsed');
+        sidebar?.classList.remove('collapsed'); // Remove the collapsed class if sidebar is expanded
       }
     };
 
+    // A reactive array containing the menu items with their names, links, and icon classes
     const menuItems = ref([
-      {'name' : 'dashboard', 'link' : '/'},
-      {'name' : 'matches', 'link' : '/matches'},
-      {'name' : 'players', 'link' : '/players'},
-      {'name' : 'teams', 'link' : '/teams'},
-      {'name' : 'areas', 'link' : '/areas'}
+      { 'name': 'dashboard', 'link': '/', 'icon-class': 'bi bi-clipboard-data-fill' },
+      { 'name': 'matches', 'link': '/matches', 'icon-class': 'bi bi-person-arms-up' },
+      { 'name': 'players', 'link': '/players', 'icon-class': 'bi bi-people-fill' },
+      { 'name': 'teams', 'link': '/teams', 'icon-class': 'bi bi-microsoft-teams' },
+      { 'name': 'areas', 'link': '/areas', 'icon-class': 'bi bi-globe-central-south-asia' }
     ]);
 
+    // Return values to the template
     return { isCollapsed, toggleSidebar, menuItems };
   },
 });
 </script>
+
 
 <style lang="scss" scoped>
 /* Sidebar Styles */
@@ -71,7 +89,7 @@ export default defineComponent({
   margin-left: 250px;
 }
 
-#sidebar.collapsed + #main-content {
+#sidebar.collapsed+#main-content {
   margin-left: 60px;
 }
 
