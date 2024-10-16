@@ -42,13 +42,7 @@ git clone git@github.com:Chinmay1903/L7-assessment-sports.git
 cd L7-assessment-sports
 ```
 
-### 3. Get inside the Directory
-
-```bash
-cd L7-assessment-sports
-```
-
-### 4. Building and Running in Docker
+### 3. Building and Running in Docker
 For building the Containers
 
 ```bash
@@ -61,7 +55,7 @@ For stopping the container
 docker-compose down
 ```
 
-### 5. Running Migrating and Creating Django Super User
+### 4. Running Migrating and Creating Django Super User
 After completing the container build, open a new duplicate terminal.
 
 Run below docker command in new terminal to run migration
