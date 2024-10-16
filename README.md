@@ -67,14 +67,14 @@ After completing the container build, open a new duplicate terminal.
 Run below docker command in new terminal to run migration
 
 ```bash
-docker-compose exec web python manage.py migrate
+docker-compose exec backend python manage.py migrate
 ```
 
 
 Run below docker command in new terminal to create new django admin super user
 
 ```bash
-docker-compose exec web python manage.py createsuperuser
+docker-compose exec backend python manage.py createsuperuser
 ```
 
 ### 5. Open the App in Browser
