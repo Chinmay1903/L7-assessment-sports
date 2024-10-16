@@ -43,7 +43,7 @@ cd L7-assessment-sports
 ```
 
 ### 3. Building and Running in Docker
-For building the Containers
+For building the Containers, this app is Docker based build
 
 ```bash
 docker-compose up --build
