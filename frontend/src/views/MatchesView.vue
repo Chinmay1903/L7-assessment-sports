@@ -2,7 +2,7 @@
      <div>
         <h2>Matches</h2>
         <div class="team-page-view">
-            <div v-if="matches.length > 0" class="d-flex justify-content-evenly flex-wrap">
+            <div v-if="matches.length > 0" class="d-flex justify-content-start flex-wrap gap-3">
                 <div v-for="(match, index) in matches" :key="index">
                     <CardComponent>
                         <template v-slot:header>

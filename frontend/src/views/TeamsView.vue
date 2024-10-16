@@ -2,11 +2,11 @@
     <div>
         <h2>Teams</h2>
         <div class="team-page-view">
-            <div v-if="teams.length > 0" class="d-flex justify-content-evenly flex-wrap">
-                <div v-for="(team, index) in teams" :key="index">
+            <div v-if="teams.length > 0" class="d-flex justify-content-start flex-wrap gap-3">
+                <div v-for="(team, index) in teams" :key="index" class="col-3">
                     <CardComponent :header="false">
                         <template v-slot:content>
-                            <h3>{{ team.name }}</h3>
+                            <h3 class="text-center">{{ team.name }}</h3>
                         </template>
                         <template v-slot:footer>
                             <p>Coach: {{ team.coach }}</p>
