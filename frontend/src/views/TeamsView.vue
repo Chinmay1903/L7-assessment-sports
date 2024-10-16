@@ -1,8 +1,8 @@
 <template>
     <div>
         <h2>Teams</h2>
-        <div class="team-page-view d-flex justify-content-evenly flex-wrap">
-            <div v-if="teams.length > 0">
+        <div class="team-page-view">
+            <div v-if="teams.length > 0" class="d-flex justify-content-evenly flex-wrap">
                 <div v-for="(team, index) in teams" :key="index">
                     <CardComponent :header="false">
                         <template v-slot:content>
