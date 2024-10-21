@@ -9,7 +9,7 @@
     </div>
     <div class="list-group list-group-flush">
       <RouterLink v-for="(item, index) in menuItems" :to="item.link" :key="index"
-        class="list-group-item list-group-item-action p-3 text-capitalize">
+        class="list-group-item list-group-item-action p-3 text-capitalize" active-class="bg-info text-dark">
         <i :class="item['icon-class']"></i>
         <span class="ms-2" v-if="!isCollapsed">{{ item.name }}</span>
       </RouterLink>
