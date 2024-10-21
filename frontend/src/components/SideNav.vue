@@ -2,8 +2,9 @@
   <div id="sidebar" class="bg-light border-end">
     <div class="sidebar-header p-3 d-flex justify-content-between">
       <h4 v-if="!isCollapsed">Menu</h4>
-      <button class="btn" @click="toggleSidebar" aria-expanded="true" aria-controls="sidebar">
-        <i :class="isCollapsed ? 'bi bi-caret-right-fill' : 'bi bi-caret-left-fill'"></i>
+      <button :class="['btn', 'toggle-btn', !isCollapsed ? '' : 'rotated']" @click="toggleSidebar" aria-expanded="true"
+        aria-controls="sidebar">
+        <i class="bi bi-caret-left-fill"></i>
       </button>
     </div>
     <div class="list-group list-group-flush">
@@ -40,7 +41,7 @@ export default defineComponent({
    */
   setup() {
     // Reactive reference to manage the collapsed state of the sidebar
-    const isCollapsed = ref(false); 
+    const isCollapsed = ref(false);
 
     /**
      * Toggles the collapsed state of the sidebar.
@@ -78,6 +79,17 @@ export default defineComponent({
   width: 250px;
   height: 100%;
   transition: width 0.3s ease;
+
+  .sidebar-header {
+    .toggle-btn {
+      transition: transform 0.3s ease;
+    }
+
+    .toggle-btn.rotated {
+      transform: rotate(180deg);
+      padding: 0;
+    }
+  }
 }
 
 #sidebar.collapsed {
